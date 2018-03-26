@@ -1,0 +1,11 @@
+use seckill;
+
+CREATE TABLE goods (
+  goods_id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '货物ID',
+  goods_name VARCHAR(30) NOT NULL COMMENT '名字',
+  goods_seckill_start_time TIMESTAMP NOT NULL COMMENT '秒杀开始时间',
+  goods_seckill_end_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '秒杀结束时间',
+  goods_add_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '商品添加时间',
+  goods_price INT NOT NULL COMMENT '商品价格',
+  goods_stock INT NOT NULL COMMENT '商品库存'
+)ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT ='商品信息表';
