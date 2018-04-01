@@ -15,7 +15,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response, Object handler, Exception exc)
             throws Exception {
-
+//        HttpSession session = request.getSession();
+//        String userId = (String)session.getAttribute("user_id");
+//        System.out.println("afterCompletion-userId: " + userId);
+//        System.out.println("afterCompletion-session-id: " + request.getSession().getId());
     }
 
     /**
@@ -23,6 +26,9 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     public void postHandle(HttpServletRequest request, HttpServletResponse response,
                            Object handler, ModelAndView modelAndView) throws Exception {
+//        HttpSession session = request.getSession();
+//        String userId = (String)session.getAttribute("user_id");
+//        System.out.println("postHandle-userId: " + userId);
     }
 
     /**
@@ -32,21 +38,22 @@ public class LoginInterceptor implements HandlerInterceptor {
                              Object handler) throws Exception {
         //获取请求的URL
         String url = request.getRequestURI();
-        System.out.print("url: " + url);
+        System.out.println("url: " + url);
         //URL:login.jsp是公开的;这个demo是除了login.jsp是可以公开访问的，其它的URL都进行拦截控制
-        if(url.indexOf("/user/login")>=0){
+        if(url.indexOf("/user/do_login")>=0 || url.indexOf("/user/login") >=0){
             return true;
         }
         //获取Session
         HttpSession session = request.getSession();
         String userId = (String)session.getAttribute("user_id");
-
+        System.out.println("userId: " + userId);
+        System.out.println("preHandle-session-id: " + request.getSession().getId());
         if(userId != null){
             return true;
         }
         //不符合条件的，跳转到登录界面
-//        response.sendRedirect("/user/login");
-        request.getRequestDispatcher("/WEB-INF/page/login.jsp").forward(request, response);
+        response.sendRedirect("/user/login");
+//        request.getRequestDispatcher("/WEB-INF/page/login.jsp").forward(request, response);
 
         return false;
     }

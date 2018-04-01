@@ -1,5 +1,7 @@
 package org.seckill.result;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
+
 public class CodeMsg {
         private int code;
         private String msg;
@@ -9,11 +11,17 @@ public class CodeMsg {
         public static CodeMsg SERVER_ERROR = new CodeMsg(500100, "服务端异常");
         //登录模块 5002XX
 
+        public static CodeMsg LOGIN_ERROR = new CodeMsg(500200, "用户名或者密码错误");
+
+
         //商品模块 5003XX
 
         //订单模块 5004XX
 
         //秒杀模块 5005XX
+        public static CodeMsg SECKILL_END = new CodeMsg(500500, "秒杀结束");
+        public static CodeMsg SECKILL_NOT_START = new CodeMsg(500501, "秒杀未开始");
+
 
 
         private CodeMsg(int code, String msg) {

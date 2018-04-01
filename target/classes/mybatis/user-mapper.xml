@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seckill.dao.UserDao">
+    <select id="getUserByPhone" parameterType="long" resultType="org.seckill.entity.User">
+        SELECT
+            user_id, user_phone, user_password, user_name
+        FROM user
+        WHERE user.user_phone = #{phone}
+    </select>
+</mapper>

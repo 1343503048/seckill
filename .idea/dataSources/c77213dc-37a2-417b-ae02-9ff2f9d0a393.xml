@@ -945,7 +945,7 @@
     <column id="235" parent="229" name="goods_name">
       <Position>2</Position>
       <Comment>名字</Comment>
-      <DataType>varchar(30)|0</DataType>
+      <DataType>varchar(200)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
@@ -1031,8 +1031,10 @@
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="247" parent="230" name="order_user_id">
-      <ColNames>order_user_id</ColNames>
+    <index id="247" parent="230" name="user_and_goods">
+      <ColNames>order_user_id
+order_goods_id</ColNames>
+      <Unique>1</Unique>
     </index>
     <index id="248" parent="230" name="order_goods_id">
       <ColNames>order_goods_id</ColNames>
@@ -1042,31 +1044,36 @@
       <ColNames>order_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="250" parent="230" name="orders_ibfk_2">
+    <key id="250" parent="230" name="user_and_goods">
+      <ColNames>order_user_id
+order_goods_id</ColNames>
+      <UnderlyingIndexName>user_and_goods</UnderlyingIndexName>
+    </key>
+    <foreign-key id="251" parent="230" name="orders_ibfk_2">
       <ColNames>order_user_id</ColNames>
       <RefSchemaName>seckill</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <foreign-key id="251" parent="230" name="orders_ibfk_1">
+    <foreign-key id="252" parent="230" name="orders_ibfk_1">
       <ColNames>order_goods_id</ColNames>
       <RefSchemaName>seckill</RefSchemaName>
       <RefTableName>goods</RefTableName>
       <RefColNames>goods_id</RefColNames>
     </foreign-key>
-    <column id="252" parent="231" name="seckill_id">
+    <column id="253" parent="231" name="seckill_id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="231" name="user_phone">
+    <column id="254" parent="231" name="user_phone">
       <Position>2</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="231" name="state">
+    <column id="255" parent="231" name="state">
       <Position>3</Position>
       <Comment>-1: 无效 0:成功 1:已付</Comment>
       <DataType>tinyint(4)|0</DataType>
@@ -1074,7 +1081,7 @@
       <DefaultExpression>&apos;-1&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="231" name="create_time">
+    <column id="256" parent="231" name="create_time">
       <Position>4</Position>
       <DataType>timestamp|0</DataType>
       <NotNull>1</NotNull>
@@ -1082,13 +1089,13 @@
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <key id="256" parent="231" name="PRIMARY">
+    <key id="257" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>seckill_id
 user_phone</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="232" name="seckill_id">
+    <column id="258" parent="232" name="seckill_id">
       <Position>1</Position>
       <Comment>商品ID</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1096,28 +1103,28 @@ user_phone</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="232" name="name">
+    <column id="259" parent="232" name="name">
       <Position>2</Position>
       <Comment>名称</Comment>
       <DataType>varchar(120)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="232" name="number">
+    <column id="260" parent="232" name="number">
       <Position>3</Position>
       <Comment>数量</Comment>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="232" name="price">
+    <column id="261" parent="232" name="price">
       <Position>4</Position>
       <Comment>价格</Comment>
       <DataType>decimal(10)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="232" name="start_time">
+    <column id="262" parent="232" name="start_time">
       <Position>5</Position>
       <Comment>秒杀开启时间</Comment>
       <DataType>timestamp|0</DataType>
@@ -1126,7 +1133,7 @@ user_phone</ColNames>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <column id="262" parent="232" name="end_time">
+    <column id="263" parent="232" name="end_time">
       <Position>6</Position>
       <Comment>秒杀结束时间</Comment>
       <DataType>timestamp|0</DataType>
@@ -1134,7 +1141,7 @@ user_phone</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="232" name="create_time">
+    <column id="264" parent="232" name="create_time">
       <Position>7</Position>
       <Comment>秒杀创建时间</Comment>
       <DataType>timestamp|0</DataType>
@@ -1142,12 +1149,12 @@ user_phone</ColNames>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="264" parent="232" name="PRIMARY">
+    <key id="265" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>seckill_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="265" parent="233" name="user_id">
+    <column id="266" parent="233" name="user_id">
       <Position>1</Position>
       <Comment>用户ID</Comment>
       <DataType>bigint(20)|0</DataType>
@@ -1155,37 +1162,45 @@ user_phone</ColNames>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="233" name="user_name">
+    <column id="267" parent="233" name="user_name">
       <Position>2</Position>
       <Comment>名字</Comment>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="233" name="user_phone">
+    <column id="268" parent="233" name="user_phone">
       <Position>3</Position>
       <Comment>电话</Comment>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="233" name="user_password">
+    <column id="269" parent="233" name="user_password">
       <Position>4</Position>
       <Comment>登录密码</Comment>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="269" parent="233" name="user_phone">
+    <index id="270" parent="233" name="index_user_phone">
       <ColNames>user_phone</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="270" parent="233" name="PRIMARY">
+    <index id="271" parent="233" name="user_phone">
+      <ColNames>user_phone</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="272" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>user_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="271" parent="233" name="user_phone">
+    <key id="273" parent="233" name="index_user_phone">
+      <ColNames>user_phone</ColNames>
+      <UnderlyingIndexName>index_user_phone</UnderlyingIndexName>
+    </key>
+    <key id="274" parent="233" name="user_phone">
       <ColNames>user_phone</ColNames>
       <UnderlyingIndexName>user_phone</UnderlyingIndexName>
     </key>

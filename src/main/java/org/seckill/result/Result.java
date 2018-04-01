@@ -29,7 +29,16 @@ public class Result<T> {
             this.msg = cm.getMsg();
         }
 
-        public int getCode() {
+    @Override
+    public String toString() {
+        return "Result{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
+    public int getCode() {
             return code;
         }
         public String getMsg() {
