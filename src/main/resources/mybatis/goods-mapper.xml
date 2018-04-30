@@ -5,8 +5,8 @@
 <mapper namespace="org.seckill.dao.GoodsDao">
     <select id="getGoodsList" resultType="org.seckill.entity.Goods">
         SELECT
-            goods_id, goods_name, goods_price, goods_stock, goods_add_time,
-            goods_seckill_start_time, goods_seckill_end_time
+        goods_id, goods_name, goods_price, goods_stock, goods_add_time,
+        goods_seckill_start_time, goods_seckill_end_time
         FROM goods
         LIMIT 0, #{limit}
     </select>
@@ -22,35 +22,35 @@
 
     <update id="reduceStock" parameterType="long">
         UPDATE
-          goods
+        goods
         SET
-            goods_stock = goods.goods_stock-1
+        goods_stock = goods.goods_stock-1
         WHERE
-            goods_id = #{id} AND  goods_stock > 0
+        goods_id = #{id} AND goods_stock > 0
     </update>
     <!--<update id="reduceNumber">-->
-        <!--UPDATE-->
-        <!--seckill-->
-        <!--SET-->
-        <!--number = number - 1-->
-        <!--WHERE seckill_id = #{seckillId}-->
-        <!--AND seckill.end_time >= #{killTime}-->
-        <!--AND number > 0-->
-        <!--AND start_time <![CDATA[ <= ]]> #{killTime}-->
+    <!--UPDATE-->
+    <!--seckill-->
+    <!--SET-->
+    <!--number = number - 1-->
+    <!--WHERE seckill_id = #{seckillId}-->
+    <!--AND seckill.end_time >= #{killTime}-->
+    <!--AND number > 0-->
+    <!--AND start_time <![CDATA[ <= ]]> #{killTime}-->
     <!--</update>-->
 
     <!--<select id="queryById" parameterType="long" resultType="org.seckill.entity.Seckill">-->
-        <!--SELECT-->
-        <!--seckill_id, name, number, price, start_time, end_time, create_time-->
-        <!--FROM seckill-->
-        <!--WHERE seckill.seckill_id = #{seckillId}-->
+    <!--SELECT-->
+    <!--seckill_id, name, number, price, start_time, end_time, create_time-->
+    <!--FROM seckill-->
+    <!--WHERE seckill.seckill_id = #{seckillId}-->
     <!--</select>-->
 
     <!--<select id="queryAll" resultType="org.seckill.entity.Seckill">-->
-        <!--SELECT-->
-        <!--seckill_id, name, number, start_time, end_time, create_time, price-->
-        <!--FROM seckill-->
-        <!--ORDER BY create_time-->
-        <!--LIMIT #{offset}, #{limit}-->
+    <!--SELECT-->
+    <!--seckill_id, name, number, start_time, end_time, create_time, price-->
+    <!--FROM seckill-->
+    <!--ORDER BY create_time-->
+    <!--LIMIT #{offset}, #{limit}-->
     <!--</select>-->
 </mapper>

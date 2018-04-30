@@ -9,10 +9,9 @@ import java.util.List;
 @Repository
 public interface GoodsDao {
 
-    public List<Goods> getGoodsList(@Param("offset") long offset, @Param("limit") long limit);
+  public List<Goods> getGoodsList(@Param("offset") long offset, @Param("limit") long limit);
 
-    public Goods getGoodsById(@Param("id") long id);
+  public Goods getGoodsById(@Param("id") long id);
 
-    public void reduceStock(@Param("id") long id);
-
+  public int reduceStock(@Param("id") long id);
 }

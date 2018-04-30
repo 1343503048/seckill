@@ -9,25 +9,28 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:/spring-dao.xml"})
 public class GoodsDaoTest {
 
-    @Autowired
-    private GoodsDao goodsDao;
+  @Autowired private GoodsDao goodsDao;
 
-    @Test
-    public void getGoodsList() {
-        List<Goods> list = goodsDao.getGoodsList(0, 4);
-        for (Goods goods : list) {
-            System.out.println(goods);
-        }
+  @Test
+  public void getGoodsList() {
+    List<Goods> list = goodsDao.getGoodsList(0, 4);
+    for (Goods goods : list) {
+      System.out.println(goods);
     }
+  }
 
-    @Test
-    public void getGoodsById() {
-        long id = 10001;
-        System.out.println(goodsDao.getGoodsById(id));
-    }
+  @Test
+  public void getGoodsById() {
+    long id = 10001;
+    System.out.println(goodsDao.getGoodsById(id));
+  }
+
+  @Test
+  public void reduceStock() {
+    System.out.println(goodsDao.reduceStock(10001));
+  }
 }

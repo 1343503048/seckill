@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${goods.goodsName}+'商品秒杀系统'"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
 
@@ -25,15 +25,15 @@
             <td colspan="3" th:text="${goods.goodsName}"></td>
         </tr>
         <!--<tr>-->
-            <!--<td>商品图片</td>-->
-            <!--<td colspan="3"><img th:src="@{${goods.goodsImg}}" width="200" height="200" /></td>-->
+        <!--<td>商品图片</td>-->
+        <!--<td colspan="3"><img th:src="@{${goods.goodsImg}}" width="200" height="200" /></td>-->
         <!--</tr>-->
         <tr>
             <td>秒杀开始时间</td>
             <td th:text="${#dates.format(goods.goodsSeckillStartTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
-            <input type="hidden" id="startTime" th:value="${startTime}" />
-            <input type="hidden" id="endTime" th:value="${endTime}" />
-            <input type="hidden" id="remainSeconds" />
+            <input type="hidden" id="startTime" th:value="${startTime}"/>
+            <input type="hidden" id="endTime" th:value="${endTime}"/>
+            <input type="hidden" id="remainSeconds"/>
             <td id="miaoshaTip">
                 <span><span id="countDown"></span>秒</span>
                 <!--<span th:if="${seckilStatus eq 0}">秒杀进行中</span>-->
@@ -41,7 +41,7 @@
             </td>
             <td>
                 <button class="btn btn-primary btn-block" type="submit" id="buyButton">立即秒杀</button>
-                <input type="hidden" id="goodsId" name="goodsId" th:value="${goods.goodsId}" />
+                <input type="hidden" id="goodsId" name="goodsId" th:value="${goods.goodsId}"/>
             </td>
         </tr>
         <tr>
@@ -63,17 +63,18 @@
     });
 
     function getKillUrl(goodsId) {
-        $.get("/seckill/"+goodsId+"/seckillurl",{},function (data, stutus,xhr) {
-            if(data['code'] == 0) {
+        $.get("/seckill/" + goodsId + "/seckillurl", {}, function (data, stutus, xhr) {
+            if (data['code'] == 0) {
                 var killurl = "/seckill/" + goodsId + "/" + data['data'] + "/execution";
-                $("#buyButton").one('click',function () {
+                $("#buyButton").one('click', function () {
                     alert("click")
                     // $("#buyButton").disable();
                     $("#buyButton").attr("disabled", true);
                     $.post(killurl, {},
                         function (data) {
-                            if (data['code']==0) {
-                                location="/orders/" + data['data'] + "/detail";
+                            alert(data['data']);
+                            if (data['code'] == 0) {
+                                location = "/orders/" + data['data'] + "/detail";
                             }
                             else {
                                 $("#error_msg").html(data['msg']);
@@ -82,7 +83,7 @@
                     return false;
                 });
             }
-            else if(data['code'] == 500500){
+            else if (data['code'] == 500500) {
                 alert(data['code'] + ": " + data['msg']);
             }
             else {
@@ -100,8 +101,8 @@
         if (remainSecond > 0) {
             $("#buyButton").attr("disabled", true);
             timeout = setTimeout(function () {
-                $("#countDown").text(remainSecond-1);
-                $("#remainSeconds").val(remainSecond-1);
+                $("#countDown").text(remainSecond - 1);
+                $("#remainSeconds").val(remainSecond - 1);
                 doCountDown();
             }, 1000);
         } else {
@@ -115,10 +116,10 @@
     }
 
     function countDown() {
-        $.get("/seckill/time/now",{},function (data, stutus, xhr) {
+        $.get("/seckill/time/now", {}, function (data, stutus, xhr) {
             var nowTime = data['data'];
             var endTime = $("#endTime").val();
-            if(nowTime > endTime) {
+            if (nowTime > endTime) {
                 $("#buyButton").attr("disabled", true);
                 $("#miaoshaTip").html("秒杀已经结束");
                 return;

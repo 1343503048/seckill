@@ -20,37 +20,37 @@
 
 </head>
 <body>
-    <!--<h2 th:text="${username}"></h2>-->
-    <form method="post">
-        <label for="phone">用户手机号</label>
-        <input type="text" id="phone" name="phone"/>
-        <label for="password">密码</label>
-        <input type="password" id="password" name="password"/>
-        <button id="login" name="login">登录</button>
-    </form>
-    <p id="error_msg" style="color: red"></p>
+<!--<h2 th:text="${username}"></h2>-->
+<form method="post">
+    <label for="phone">用户手机号</label>
+    <input type="text" id="phone" name="phone"/>
+    <label for="password">密码</label>
+    <input type="password" id="password" name="password"/>
+    <button id="login" name="login">登录</button>
+</form>
+<p id="error_msg" style="color: red"></p>
 </body>
 
 <script>
     $(document).ready(function () {
-        var ok="";
+        var ok = "";
         $("#login").click(function (event) {
             event.preventDefault();
             $.post("/user/do_login", {
-                phone:$("#phone").val(),
-                password: $("#password").val()
-            },
-            function (data, status, xhr) {
-                // alert(status)
-                if (data['code']==0) {
-                    location="/goods/list";
-                    $("#error_msg").html(data['msg']);
-                }
+                    phone: $("#phone").val(),
+                    password: $("#password").val()
+                },
+                function (data, status, xhr) {
+                    // alert(status)
+                    if (data['code'] == 0) {
+                        location = "/goods/list";
+                        $("#error_msg").html(data['msg']);
+                    }
                     // window.location.href="/goods/list";
-                else {
-                    $("#error_msg").html(data['msg']);
-                }
-            }, "json");
+                    else {
+                        $("#error_msg").html(data['msg']);
+                    }
+                }, "json");
             return false;
         });
     });

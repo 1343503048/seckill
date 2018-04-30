@@ -3,80 +3,88 @@ package org.seckill.entity;
 import java.util.Date;
 
 public class Goods {
-    @Override
-    public String toString() {
-        return "Goods{" +
-                "goodsId=" + goodsId +
-                ", goodsName='" + goodsName + '\'' +
-                ", goodsSeckillStartTime=" + goodsSeckillStartTime +
-                ", goodsSeckillEndTime=" + goodsSeckillEndTime +
-                ", goodsAddTime=" + goodsAddTime +
-                ", goodsStock=" + goodsStock +
-                ", goodsPrice=" + goodsPrice +
-                '}';
-    }
+  private long goodsId;
+  private String goodsName;
+  private Date goodsSeckillStartTime;
+  private Date goodsSeckillEndTime;
+  private Date goodsAddTime;
+  private int goodsStock;
+  private int goodsPrice;
 
-    public long getGoodsId() {
-        return goodsId;
-    }
+  @Override
+  public String toString() {
+    return "Goods{"
+        + "goodsId="
+        + goodsId
+        + ", goodsName='"
+        + goodsName
+        + '\''
+        + ", goodsSeckillStartTime="
+        + goodsSeckillStartTime
+        + ", goodsSeckillEndTime="
+        + goodsSeckillEndTime
+        + ", goodsAddTime="
+        + goodsAddTime
+        + ", goodsStock="
+        + goodsStock
+        + ", goodsPrice="
+        + goodsPrice
+        + '}';
+  }
 
-    public void setGoodsId(long goosId) {
-        this.goodsId = goosId;
-    }
+  public long getGoodsId() {
+    return goodsId;
+  }
 
-    public String getGoodsName() {
-        return goodsName;
-    }
+  public void setGoodsId(long goosId) {
+    this.goodsId = goosId;
+  }
 
-    public void setGoodsName(String goodsName) {
-        this.goodsName = goodsName;
-    }
+  public String getGoodsName() {
+    return goodsName;
+  }
 
-    public Date getGoodsSeckillStartTime() {
-        return goodsSeckillStartTime;
-    }
+  public void setGoodsName(String goodsName) {
+    this.goodsName = goodsName;
+  }
 
-    public void setGoodsSeckillStartTime(Date goodsSeckillStartTime) {
-        this.goodsSeckillStartTime = goodsSeckillStartTime;
-    }
+  public Date getGoodsSeckillStartTime() {
+    return goodsSeckillStartTime;
+  }
 
-    public Date getGoodsSeckillEndTime() {
-        return goodsSeckillEndTime;
-    }
+  public void setGoodsSeckillStartTime(Date goodsSeckillStartTime) {
+    this.goodsSeckillStartTime = goodsSeckillStartTime;
+  }
 
-    public void setGoodsSeckillEndTime(Date goodsSeckillEndTime) {
-        this.goodsSeckillEndTime = goodsSeckillEndTime;
-    }
+  public Date getGoodsSeckillEndTime() {
+    return goodsSeckillEndTime;
+  }
 
-    public Date getGoodsAddTime() {
-        return goodsAddTime;
-    }
+  public void setGoodsSeckillEndTime(Date goodsSeckillEndTime) {
+    this.goodsSeckillEndTime = goodsSeckillEndTime;
+  }
 
-    public void setGoodsAddTime(Date goodsAddTime) {
-        this.goodsAddTime = goodsAddTime;
-    }
+  public Date getGoodsAddTime() {
+    return goodsAddTime;
+  }
 
-    public int getGoodsStock() {
-        return goodsStock;
-    }
+  public void setGoodsAddTime(Date goodsAddTime) {
+    this.goodsAddTime = goodsAddTime;
+  }
 
-    public void setGoodsStock(int goodsStock) {
-        this.goodsStock = goodsStock;
-    }
+  public int getGoodsStock() {
+    return goodsStock;
+  }
 
-    public int getGoodsPrice() {
-        return goodsPrice;
-    }
+  public void setGoodsStock(int goodsStock) {
+    this.goodsStock = goodsStock;
+  }
 
-    public void setGoodsPrice(int goodsPrice) {
-        this.goodsPrice = goodsPrice;
-    }
+  public int getGoodsPrice() {
+    return goodsPrice;
+  }
 
-    private long goodsId;
-    private String goodsName;
-    private Date goodsSeckillStartTime;
-    private Date goodsSeckillEndTime;
-    private Date goodsAddTime;
-    private int goodsStock;
-    private int goodsPrice;
+  public void setGoodsPrice(int goodsPrice) {
+    this.goodsPrice = goodsPrice;
+  }
 }

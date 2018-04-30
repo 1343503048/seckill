@@ -5,8 +5,15 @@
 <mapper namespace="org.seckill.dao.UserDao">
     <select id="getUserByPhone" parameterType="long" resultType="org.seckill.entity.User">
         SELECT
-            user_id, user_phone, user_password, user_name
+        user_id, user_phone, user_password, user_name
         FROM user
         WHERE user.user_phone = #{phone}
+    </select>
+
+    <select id="getUserById" parameterType="long" resultType="org.seckill.entity.User">
+        SELECT
+        user_id, user_phone, user_password, user_name
+        FROM user
+        WHERE user.user_id = #{userId}
     </select>
 </mapper>

@@ -20,12 +20,17 @@
 <div class="panel panel-default">
     <div class="panel-heading">秒杀商品列表</div>
     <table class="table table-striped text-center" id="goodslist">
-        <tr><td>商品名称</td><td>秒杀价</td><td>库存数量</td><td>详情</td></tr>
-        <tr  th:each="goods,goodsStat : ${goodsList}">
+        <tr>
+            <td>商品名称</td>
+            <td>秒杀价</td>
+            <td>库存数量</td>
+            <td>详情</td>
+        </tr>
+        <tr th:each="goods,goodsStat : ${goodsList}">
             <td th:text="${goods.goodsName}"></td>
             <td th:text="${goods.goodsPrice}"></td>
             <td th:text="${goods.goodsStock}"></td>
-            <td><a class="btn btn-info" th:href="'/goods/'+${goods.goodsId}+'/detail'" target="">详情</a></td>
+            <td><a class="btn btn-info" th:href="'/goods/'+${goods.goodsId}+'/goods_detail'" target="">详情</a></td>
         </tr>
     </table>
 </div>

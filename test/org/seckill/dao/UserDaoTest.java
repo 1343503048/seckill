@@ -10,12 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration({"classpath:/spring-dao.xml"})
 public class UserDaoTest {
 
-    @Autowired
-    private UserDao userDao;
+  @Autowired private UserDao userDao;
 
-    @Test
-    public void getUserByPhone() {
-        long phone = 132225650001l;
-        System.out.println(userDao.getUserByPhone(phone));
-    }
+  @Test
+  public void getUserByPhone() {
+    long phone = 132225650001l;
+    System.out.println(userDao.getUserByPhone(phone));
+  }
 }

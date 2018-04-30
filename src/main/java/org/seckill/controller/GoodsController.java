@@ -21,44 +21,48 @@ import java.util.List;
 @RequestMapping("/goods")
 public class GoodsController {
 
-    @Autowired
-    GoodsService goodsService;
+  //    Object
+  @Autowired GoodsService goodsService;
 
-    @Autowired
-    ThymeleafViewResolver thymeleafViewResolver;
+  @Autowired ThymeleafViewResolver thymeleafViewResolver;
 
-    @Autowired
-    ApplicationContext applicationContext;
-    /*
+  @Autowired ApplicationContext applicationContext;
+  /*
 
-     */
+  */
 
-    private String listHtml;
+  private String listHtml;
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
-    @ResponseBody
-    public String list(HttpServletRequest request, HttpServletResponse response, Model model) {
-        if (listHtml!=null) return listHtml;
-        List<Goods> goodsList = goodsService.getGoodsList(0, 4);
-        model.addAttribute("goodsList", goodsList);
-        SpringWebContext context = new SpringWebContext(request, response, request.getServletContext(),
-                request.getLocale(), model.asMap(), applicationContext);
-        listHtml = thymeleafViewResolver.getTemplateEngine().process("list", context);
-        return listHtml;
-    }
+  @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "text/html;charset=UTF-8")
+  @ResponseBody
+  public String list(HttpServletRequest request, HttpServletResponse response, Model model) {
+    if (listHtml != null) return listHtml;
+    List<Goods> goodsList = goodsService.getGoodsList(0, 4);
+    model.addAttribute("goodsList", goodsList);
+    SpringWebContext context =
+        new SpringWebContext(
+            request,
+            response,
+            request.getServletContext(),
+            request.getLocale(),
+            model.asMap(),
+            applicationContext);
+    listHtml = thymeleafViewResolver.getTemplateEngine().process("list", context);
+    return listHtml;
+  }
 
-    @RequestMapping("/{id}/detail")
-    public String detail(Model model, @PathVariable("id") Long id) {
+  @RequestMapping("/{id}/detail")
+  public String detail(Model model, @PathVariable("id") Long id) {
 
-        Goods goods = goodsService.getGoodsById(id);
-        model.addAttribute("goods", goods);
+    Goods goods = goodsService.getGoodsById(id);
+    model.addAttribute("goods", goods);
 
-//        long now = System.currentTimeMillis()/1000;
-        long startTime = goods.getGoodsSeckillStartTime().getTime()/1000;
-        long endTime = goods.getGoodsSeckillEndTime().getTime()/1000;
+    //        long now = System.currentTimeMillis()/1000;
+    long startTime = goods.getGoodsSeckillStartTime().getTime() / 1000;
+    long endTime = goods.getGoodsSeckillEndTime().getTime() / 1000;
 
-        model.addAttribute("startTime", startTime);
-        model.addAttribute("endTime", endTime);
-        return "detail";
-    }
+    model.addAttribute("startTime", startTime);
+    model.addAttribute("endTime", endTime);
+    return "goods_detail";
+  }
 }

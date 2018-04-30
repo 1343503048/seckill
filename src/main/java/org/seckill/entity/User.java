@@ -1,50 +1,56 @@
 package org.seckill.entity;
 
 public class User {
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", userPhone=" + userPhone +
-                ", userPassword='" + userPassword + '\'' +
-                '}';
-    }
+  private long userId;
+  private String userName;
+  private long userPhone;
+  private String userPassword;
 
-    public long getUserId() {
-        return userId;
-    }
+  @Override
+  public String toString() {
+    return "User{"
+        + "userId="
+        + userId
+        + ", userName='"
+        + userName
+        + '\''
+        + ", userPhone="
+        + userPhone
+        + ", userPassword='"
+        + userPassword
+        + '\''
+        + '}';
+  }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
+  public long getUserId() {
+    return userId;
+  }
 
-    public String getUserName() {
-        return userName;
-    }
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+  public String getUserName() {
+    return userName;
+  }
 
-    public long getUserPhone() {
-        return userPhone;
-    }
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
 
-    public void setUserPhone(long userPhone) {
-        this.userPhone = userPhone;
-    }
+  public long getUserPhone() {
+    return userPhone;
+  }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
+  public void setUserPhone(long userPhone) {
+    this.userPhone = userPhone;
+  }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
-    }
+  public String getUserPassword() {
+    return userPassword;
+  }
 
-    private long userId;
-    private String userName;
-    private long userPhone;
-    private String userPassword;
+  public void setUserPassword(String userPassword) {
+    this.userPassword = userPassword;
+  }
 }

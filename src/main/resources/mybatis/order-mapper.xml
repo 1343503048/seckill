@@ -4,13 +4,25 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.seckill.dao.OrderDao">
     <insert id="addOrder">
-        INSERT INTO
-          orders (order_user_id, order_goods_id, order_state)
+        INSERT IGNORE INTO
+        orders (order_user_id, order_goods_id, order_state)
         VALUE
-            (#{userId}, #{goodsId}, 0)
+        (#{userId}, #{goodsId}, 0)
     </insert>
 
-    <select id="getOrderList">
-        SELECT * FROM orders;
+    <select id="getOrderList" resultType="org.seckill.entity.Order">
+        SELECT
+        order_id, order_user_id, order_goods_id, order_create_time, order_state
+        FROM
+        orders;
+    </select>
+
+    <select id="getOrderByUserIdAndGoodsId" resultType="org.seckill.entity.Order">
+        SELECT
+        order_id, order_user_id, order_goods_id, order_create_time, order_state
+        FROM
+        orders
+        WHERE
+        order_user_id = #{userId} AND order_goods_id = #{goodsId}
     </select>
 </mapper>
